@@ -7,9 +7,9 @@ let GW=$2;
 let GH=$3;
 
 adb shell settings put global overlay_display_devices \${GW}x\${GH}/200;
-let PhoneDisplay=\$(scrcpy -V error --display=255 | grep -so "\-\-display [0-9]*" | grep -v "\-\-display 0" | grep -o "[0-9]*");
-adb shell wm size reset -d \$PhoneDisplay;
-adb shell am start-activity --windowingMode 6 --display \$PhoneDisplay $4/$5; scrcpy --display \$PhoneDisplay --window-title $1 --crop \$GW:\$GH:0:40 && adb shell settings put global overlay_display_devices none && adb shell input keyevent HOME
+let PhoneDisplay=\$(scrcpy --list-displays | grep -soe "--display-id=[0-9]*" | grep -soe "[0-9]*" | tail -n1);
+adb shell wm size reset -d \${PhoneDisplay};
+adb shell am start-activity --windowingMode 6 --display \${PhoneDisplay} $4/$5; scrcpy --display-id=\${PhoneDisplay} --window-title $1 --crop \${GW}:\${GH}:0:40 && adb shell settings put global overlay_display_devices none && adb shell input keyevent HOME
 EOF
 
 chmod +x $1.sh
