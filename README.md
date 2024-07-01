@@ -25,13 +25,13 @@ Step 4. Run create-app.sh:
 $ chmod +x ./create-app.sh
 $ ./create-app.sh WindowName Width Height Package Activity
 ```
-	WindowName: name of the window to be displayed in title bar
+	    WindowName: name of the window to be displayed in title bar
+  	    Width: width of app window and of the virtual screen that will be
+	            used
  	    Height: height of app window and of the virtual screen that will be
 	            used
 	            Take note that 40px at the top will be cut to immerse
 	            android titlebar with linux one
-	     Width: width of app window and of the virtual screen that will be
-	            used
 	   Package: package name of the app, e.g. com.android.launcher3
 	  Activity: name of the activity that will be started.
 	            Not all activities are supported.
